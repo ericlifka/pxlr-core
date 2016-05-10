@@ -1,6 +1,6 @@
 (function () {
 /* start:pxlr-core */
-DefineModule('pxlr/core', function () {
+SM.DefineModule('pxlr/core', function () {
     return {
         name: "pxlr-core",
         information: "Backbone utilities and core classes of pxlr"
@@ -8,21 +8,21 @@ DefineModule('pxlr/core', function () {
 });
 
 /* provide namespace backwards compatibility for v1 */
-DefineModule('models/animation', function (require) {
+SM.DefineModule('models/animation', function (require) {
     return require('pxlr/core/animation');
 });
-DefineModule('models/cell-grid', function (require) {
+SM.DefineModule('models/cell-grid', function (require) {
     return require('pxlr/core/cell-grid');
 });
-DefineModule('models/sprite', function (require) {
+SM.DefineModule('models/sprite', function (require) {
     return require('pxlr/core/sprite');
 });
-DefineModule('models/sprite-group', function (require) {
+SM.DefineModule('models/sprite-group', function (require) {
     return require('pxlr/core/sprite-group');
 });
 
-DefineModule('pxlr/core/animation', function () {
-    return DefineClass({
+SM.DefineModule('pxlr/core/animation', function () {
+    return SM.DefineClass([{
         finished: false,
         constructor: function (options) {
             this.frames = options.frames;
@@ -58,11 +58,11 @@ DefineModule('pxlr/core/animation', function () {
 
             this.frames[ this.currentFrame ].renderToFrame(frame, x, y, index);
         }
-    });
+    }]);
 });
 
-DefineModule('pxlr/core/cell-grid', function () {
-    return DefineClass({
+SM.DefineModule('pxlr/core/cell-grid', function () {
+    return SM.DefineClass([{
         iterateCells: function (handler) {
             for (var x = 0; x < this.width; x++) {
                 for (var y = 0; y < this.height; y++) {
@@ -78,11 +78,11 @@ DefineModule('pxlr/core/cell-grid', function () {
                 return { x: -1, y: -1, color: "#000000", index: -1 };
             }
         }
-    });
+    }]);
 });
 
-DefineModule('pxlr/core/sprite-group', function () {
-    return DefineClass({
+SM.DefineModule('pxlr/core/sprite-group', function () {
+    return SM.DefineClass([{
         constructor: function (sprites) {
             this.spriteDescriptors = sprites || [];
 
@@ -119,15 +119,16 @@ DefineModule('pxlr/core/sprite-group', function () {
                 );
             });
         }
-    });
+    }]);
 });
 
-DefineModule('pxlr/core/sprite', function (require) {
+SM.DefineModule('pxlr/core/sprite', function (require) {
     var CellGrid = require('pxlr/core/cell-grid');
 
-    var Sprite = DefineClass(CellGrid, {
+    // This variable is for the clone function to have a reference to the constructor
+    var Sprite = SM.DefineClass([CellGrid, {
         finished: true,
-        constructor: function Sprite(pixels, meta) {
+        constructor: function (pixels, meta) {
             this.meta = meta || {};
             this.width = pixels.length;
             this.height = pixels[ 0 ].length;
@@ -242,7 +243,7 @@ DefineModule('pxlr/core/sprite', function (require) {
             }
             return this;
         }
-    });
+    }]);
 
     return Sprite;
 });
