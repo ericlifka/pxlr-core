@@ -1,5 +1,5 @@
-DefineModule('pxlr/core/animation', function () {
-    return DefineClass({
+SM.DefineModule('pxlr/core/animation', function () {
+    return SM.DefineClass([{
         finished: false,
         constructor: function (options) {
             this.frames = options.frames;
@@ -35,5 +35,5 @@ DefineModule('pxlr/core/animation', function () {
 
             this.frames[ this.currentFrame ].renderToFrame(frame, x, y, index);
         }
-    });
+    }]);
 });

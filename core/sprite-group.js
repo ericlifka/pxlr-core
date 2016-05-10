@@ -1,5 +1,5 @@
-DefineModule('pxlr/core/sprite-group', function () {
-    return DefineClass({
+SM.DefineModule('pxlr/core/sprite-group', function () {
+    return SM.DefineClass([{
         constructor: function (sprites) {
             this.spriteDescriptors = sprites || [];
 
@@ -36,5 +36,5 @@ DefineModule('pxlr/core/sprite-group', function () {
                 );
             });
         }
-    });
+    }]);
 });

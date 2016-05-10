@@ -1,4 +1,4 @@
-DefineModule('pxlr/core', function () {
+SM.DefineModule('pxlr/core', function () {
     return {
         name: "pxlr-core",
         information: "Backbone utilities and core classes of pxlr"
@@ -6,15 +6,15 @@ DefineModule('pxlr/core', function () {
 });
 
 /* provide namespace backwards compatibility for v1 */
-DefineModule('models/animation', function (require) {
+SM.DefineModule('models/animation', function (require) {
     return require('pxlr/core/animation');
 });
-DefineModule('models/cell-grid', function (require) {
+SM.DefineModule('models/cell-grid', function (require) {
     return require('pxlr/core/cell-grid');
 });
-DefineModule('models/sprite', function (require) {
+SM.DefineModule('models/sprite', function (require) {
     return require('pxlr/core/sprite');
 });
-DefineModule('models/sprite-group', function (require) {
+SM.DefineModule('models/sprite-group', function (require) {
     return require('pxlr/core/sprite-group');
 });

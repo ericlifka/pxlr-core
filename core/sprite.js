@@ -1,9 +1,10 @@
-DefineModule('pxlr/core/sprite', function (require) {
+SM.DefineModule('pxlr/core/sprite', function (require) {
     var CellGrid = require('pxlr/core/cell-grid');
 
-    var Sprite = DefineClass(CellGrid, {
+    // This variable is for the clone function to have a reference to the constructor
+    var Sprite = SM.DefineClass([CellGrid, {
         finished: true,
-        constructor: function Sprite(pixels, meta) {
+        constructor: function (pixels, meta) {
             this.meta = meta || {};
             this.width = pixels.length;
             this.height = pixels[ 0 ].length;
@@ -118,7 +119,7 @@ DefineModule('pxlr/core/sprite', function (require) {
             }
             return this;
         }
-    });
+    }]);
 
     return Sprite;
 });

@@ -1,5 +1,5 @@
-DefineModule('pxlr/core/cell-grid', function () {
-    return DefineClass({
+SM.DefineModule('pxlr/core/cell-grid', function () {
+    return SM.DefineClass([{
         iterateCells: function (handler) {
             for (var x = 0; x < this.width; x++) {
                 for (var y = 0; y < this.height; y++) {
@@ -15,5 +15,5 @@ DefineModule('pxlr/core/cell-grid', function () {
                 return { x: -1, y: -1, color: "#000000", index: -1 };
             }
         }
-    });
+    }]);
 });
